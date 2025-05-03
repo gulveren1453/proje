@@ -1,0 +1,31 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main  # Ana branch'te push yapıldığında tetiklenecek
+  pull_request:
+    branches:
+      - main  # Pull request oluşturulduğunda tetiklenecek
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # İşlemi hangi ortamda çalıştıracağınızı belirler
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Kodunuzu GitHub'dan alır
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # Python sürümünü belirler
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # Gereksinimler dosyasını yükler
+
+    - name: Run tests
+      run: |
+        python -m unittest discover  # Testleri çalıştırır
