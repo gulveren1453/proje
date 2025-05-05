@@ -7,7 +7,7 @@ class TestAccountCreation(unittest.TestCase):
     def test_email_validation(self):
         """Equivalence Partitioning: Geçerli/geçersiz email formatları"""
         valid_emails = [
-            "test@example.com",
+            "testexample.com",
             "user.name+tag@domain.co",
             "a@b.co"  # Min format
         ]
